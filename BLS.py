@@ -168,3 +168,9 @@ class BroadLearningSystem:
         self.ridge.fit(H, T)
         self.Wout = self.ridge.coef_.T
         return self
+
+    def extract_features(self, X):
+        X = np.asarray(X, dtype=float)
+        if self.scaler:
+            X = self.scaler.transform(X)
+        return self._design(X)
